@@ -9,8 +9,7 @@ class Solution:
             return head
         fast,slow = head,head
         while fast != None and fast.next != None:
-            fast = fast.next.next
-            slow = slow.next
+            fast,slow = fast.next.next,slow.next
         return slow
         
 
