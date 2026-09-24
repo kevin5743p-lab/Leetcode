@@ -7,24 +7,20 @@
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        arr = list()
-        lcon = False
-
-        f = head
-        
-        if head == None :
-            print('There is no cycle in the linked list.')
+        s,f = head,head
+        while f and f.next :
+            f = f.next.next
+            s = s.next
+            if f == s:
+                break
+            
+        else:
             return None
-
-        while f != None and f.next != None:
-            if f in arr:
-                return f
-            arr.append(f)
+        s = head
+        while s != f:
+            s = s.next
             f = f.next
-        if f.next == None:
-            return None
-
-        
+        return s
 
 
 # Synced seamlessly with LeetHub Pro
