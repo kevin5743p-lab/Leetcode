@@ -5,25 +5,23 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: ListNode | None, n: int) -> ListNode | None:
-        length = 0
-        pointer = head
-        while pointer != None:
-            length += 1
-            pointer = pointer.next
-        target_node = length - n
-        index = 0
-        pointer = head
-        if target_node == 0:
-            head = pointer.next
-            return head
-        while pointer != None:
-            if index + 1 == target_node:
-                pointer.next = pointer.next.next
-                return head
-            index = index + 1
-            pointer = pointer.next
-                
-            
+        dummy = ListNode(0)
+        dummy.next = head
+        f,s = dummy,dummy
+     
+
+        count = 0
+        while count != n:
+            count += 1
+            f = f.next
+        
+        while f.next != None:
+            f = f.next
+            s = s.next
+        s.next = s.next.next
+        return dummy.next
+        
+
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
