@@ -18,7 +18,7 @@ class Solution:
         else:
             return None
 
-
+        # Detecting the exact Node
         pointer = head
         
         while pointer is not p1:
