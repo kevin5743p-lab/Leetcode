@@ -6,22 +6,25 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        p1 = head
+        p2 = head
         
-        s,f = head,head
-        while f and f.next :
-            f = f.next.next
-            s = s.next
-            if f == s:
+        # Detecting a cycle first
+        while p1 and p1.next:
+            p1 = p1.next.next
+            p2 = p2.next
+            if p1 is p2:
                 break
-            
         else:
             return None
-        s = head
-        while s != f:
-            s = s.next
-            f = f.next
-        return s
 
+
+        pointer = head
+        
+        while pointer is not p1:
+            p1 = p1.next
+            pointer = pointer.next
+        return p1
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
