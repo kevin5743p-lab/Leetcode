@@ -6,25 +6,23 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        p1 = head
-        p2 = head
-        
-        # Detecting a cycle first
-        while p1 and p1.next:
-            p1 = p1.next.next
-            p2 = p2.next
-            if p1 is p2:
+        fast = slow = head
+        if fast is None:
+            return None
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if fast == slow:
                 break
         else:
             return None
-
-        # Detecting the exact Node
-        pointer = head
         
-        while pointer is not p1:
-            p1 = p1.next
-            pointer = pointer.next
-        return p1
+        slow = head
+        while True:
+            if fast == slow:
+                return fast
+            slow = slow.next
+            fast = fast.next
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
