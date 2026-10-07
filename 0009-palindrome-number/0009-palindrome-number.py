@@ -5,10 +5,7 @@ class Solution:
             dig = x % 10
             x = x // 10'''
         num = str(x)
-        num = list(num)
-        b = num.copy()
-        b.reverse()
-        if num == b:
+        if num == num[::-1]:
             return True
         return False
 
